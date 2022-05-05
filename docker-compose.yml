@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  airflow:
+    build: './'
+    container_name: some_airflow
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags/
+      - ./logs:/opt/airflow/logs/
+      - ./plugins:/opt/airflow/plugins/
+    

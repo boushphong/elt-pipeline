@@ -1,0 +1,6 @@
+version: 2
+sources:
+  - name: snap
+    schema: raw_warehouse
+    tables:
+      - name: dim_customer

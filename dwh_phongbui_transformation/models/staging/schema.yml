@@ -1,0 +1,115 @@
+version: 2
+
+models:
+  - name: stg_actor
+    columns:
+      - name: actor_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_address
+    columns:
+      - name: address_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_category
+    columns:
+      - name: category_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_city
+    columns:
+      - name: city_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_country
+    columns:
+      - name: country_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customer
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_film
+    columns:
+      - name: film_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_film_actor
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - film_id
+            - actor_id
+    columns:
+      - name: film_id
+        tests:
+          - not_null
+      - name: actor_id
+        tests:
+          - not_null
+
+  - name: stg_film_category
+    columns:
+      - name: film_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_film_language
+    columns:
+      - name: language_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_inventory
+    columns:
+      - name: inventory_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_payment
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_rental
+    columns:
+      - name: rental_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_staff
+    columns:
+      - name: staff_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_store
+    columns:
+      - name: store_id
+        tests:
+          - unique
+          - not_null
