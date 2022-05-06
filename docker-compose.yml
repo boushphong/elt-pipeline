@@ -3,7 +3,7 @@ version: '2.1'
 services:
   airflow:
     build: 'docker/airflow'
-    container_name: some_airflow
+    container_name: some_airflow_orchestrator
     network_mode: "host"
     restart: always
     ports:
@@ -12,8 +12,8 @@ services:
       - ./dags:/opt/airflow/dags/
       - ./logs:/opt/airflow/logs/
       - ./plugins:/opt/airflow/plugins/
-   depends_on:
-     - mysql
+    depends_on:
+      - mysql
      
   mysql:
     build: 'docker/mysql'
@@ -21,3 +21,14 @@ services:
     restart: always
     ports:
       - "3306:3306"
+  
+  postgres:
+    image: postgres:14.2
+    container_name: some_postgres_db
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=dvd_rental
+    ports:
+      - "5432:5432"
