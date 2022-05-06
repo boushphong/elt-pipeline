@@ -2,6 +2,9 @@
 
 airflow db init
 
+# Stop flooding my DAG UI
+sed -i 's/load_examples = True/load_examples = False/' airflow.cfg
+
 # Run the scheduler in background
 airflow scheduler &> /dev/null &
 
