@@ -42,7 +42,7 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy the entrypoint.sh from host to container (at path AIRFLOW_HOME)
-COPY ./entrypoint.sh ./entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 
 # Set the entrypoint.sh file to be executable
 RUN chmod +x ./entrypoint.sh

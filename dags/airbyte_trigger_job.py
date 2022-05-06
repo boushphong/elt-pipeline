@@ -20,18 +20,3 @@ with DAG(dag_id='trigger_airbyte_job_example',
         timeout=3600,
         wait_seconds=3
     )
-
-    dbt_run = BashOperator(
-        this_will_skip=BashOperator(
-        task_id='dbt run',
-        bash_command='cd /opt/airflow/dwh_phongbui_transformation && dbt run',
-        dag=dag,
-    )
-        
-    dbt_snapshot = BashOperator(
-        this_will_skip=BashOperator(
-        task_id='dbt snapshot',
-        bash_command='cd /opt/airflow/dwh_phongbui_transformation && dbt snapshot',
-        dag=dag,
-        )
-    )

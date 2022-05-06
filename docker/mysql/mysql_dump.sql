@@ -1,7 +1,3 @@
-create schema if not exists dvd_rental;
-
-use dvd_rental;
-
 create table actor
 (
     actor_id    int       null,
