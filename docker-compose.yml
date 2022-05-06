@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   airflow:
-    build: './'
+    build: 'docker/airflow'
     container_name: some_airflow
     network_mode: "host"
     restart: always
@@ -12,4 +12,12 @@ services:
       - ./dags:/opt/airflow/dags/
       - ./logs:/opt/airflow/logs/
       - ./plugins:/opt/airflow/plugins/
-    
+   depends_on:
+     - mysql
+     
+  mysql:
+    build: 'docker/mysql'
+    container_name: some_mysql_db
+    restart: always
+    ports:
+      - "3306:3306"
