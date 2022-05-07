@@ -5,9 +5,9 @@ FROM mysql:8.0.29
 EXPOSE 3306
 
 # Setting environments
-ENV MYSQL_ROOT_PASSWORD=password \
-    MYSQL_USERMYSQL_USER=user \
-    MYSQL_PASSWORD=password \
+ENV MYSQL_ROOT_PASSWORD=admin \
+    MYSQL_USER=admin \
+    MYSQL_PASSWORD=admin \
     MYSQL_DATABASE=dvd_rental
 
 # Copy dump file
