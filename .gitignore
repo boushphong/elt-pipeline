@@ -1,3 +1,4 @@
-logs/
+logs/**
 .idea/
 dags/__pycache__
+plugins/**
