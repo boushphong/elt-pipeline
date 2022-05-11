@@ -1,4 +1,6 @@
 logs/**
 .idea/
 dags/__pycache__
+dags/**/__pycache__
+dags/**/.pytest_cache
 plugins/**

@@ -1,16 +1,13 @@
-import os
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.utils.dates import days_ago
 from airflow.providers.airbyte.operators.airbyte import AirbyteTriggerSyncOperator
+from airflow.models import Variable
 
-airbyte_conn = os.environ.get('AIRBYTE_CONN')
-connection_id = os.environ.get('CONNECTION_ID')
+airbyte_conn = Variable.get("airbyte_dbt_conn")
+connection_id = Variable.get("airbyte_connection_id")
 
 with DAG(dag_id='trigger_airbyte_job_example',
          default_args={'owner': 'airflow'},
          schedule_interval='@once',
-         start_date=days_ago(1)
          ) as dag:
     airbyte_sync = AirbyteTriggerSyncOperator(
         task_id='airbyte_example',
